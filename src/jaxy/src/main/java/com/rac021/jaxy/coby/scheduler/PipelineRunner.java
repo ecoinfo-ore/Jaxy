@@ -6,21 +6,23 @@ package com.rac021.jaxy.coby.scheduler ;
  * @author ryahiaoui
  */
 
-import com.rac021.jaxy.api.exceptions.BusinessException;
 import java.util.Objects ;
 import java.io.IOException ;
 import java.io.BufferedReader ;
 import java.io.InputStreamReader ;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Callable ;
 import com.rac021.jaxy.coby.checker.TokenManager ;
+import com.rac021.jax.api.exceptions.BusinessException;
+
  
 
 public class PipelineRunner implements Callable {
  
-    private final String COBY_PIPELINE_SCRIPT  ;
-    private final String LOGGER_FILE           ;
-    private final String LOGIN                 ;
-    private final String QUERY                 ;
+    private final String COBY_PIPELINE_SCRIPT   ;
+    private final String LOGGER_FILE            ;
+    private final String LOGIN                  ;
+    private final String QUERY                  ;
  
     private final int CRUNCHIFY_RUN_EVERY_M_SECONDS ;
     
@@ -70,9 +72,10 @@ public class PipelineRunner implements Callable {
                                                            process.getInputStream()) ) ;
                         String line = "" ;
                         
-                        while ((line=buf.readLine())!=null) {                           
-                            InOut.writeTextFile(line + "\n", LOGGER_FILE )   ;                           
-                            Thread.sleep(this.CRUNCHIFY_RUN_EVERY_M_SECONDS) ;
+                        while ((line=buf.readLine())!=null) {
+                            InOut.writeTextFile(line + "\n", LOGGER_FILE )     ;
+                            TimeUnit.MILLISECONDS
+                                    .sleep(this.CRUNCHIFY_RUN_EVERY_M_SECONDS) ;
                         }
                         process.waitFor() ;
                         process.destroy() ;
