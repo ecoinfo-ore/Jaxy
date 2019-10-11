@@ -20,7 +20,7 @@ public class CorsFilter implements ContainerResponseFilter {
     public void filter( final ContainerRequestContext requestContext , 
                         final ContainerResponseContext cres )  throws IOException {
 
-        cres.getHeaders().add("jaxy", "2.0") ;
+        cres.getHeaders().add("jaxy", "2.1") ;
         cres.getHeaders().add("Access-Control-Allow-Origin", "*") ;
         cres.getHeaders().add("Access-Control-Max-Age", "1209600") ;
         cres.getHeaders().add("Access-Control-Allow-Credentials", "true") ;
