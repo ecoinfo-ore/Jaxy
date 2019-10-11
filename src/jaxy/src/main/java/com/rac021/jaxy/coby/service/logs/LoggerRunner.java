@@ -9,6 +9,7 @@ package com.rac021.jaxy.coby.service.logs ;
 import java.io.File ;
 import java.io.IOException ;
 import java.io.RandomAccessFile ;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.BlockingQueue ;
 import java.util.concurrent.ArrayBlockingQueue ;
  
@@ -49,25 +50,25 @@ public class LoggerRunner implements Runnable {
  
                                     try ( RandomAccessFile readWriteFileAccess = new RandomAccessFile(crunchifyFile, "rw")) {
                                         readWriteFileAccess.seek(lastKnownPosition);
-                                        String crunchifyLine = null;
-                                        while ((crunchifyLine = readWriteFileAccess.readLine()) != null) {                                         
-                                            Thread.sleep(crunchifyRunEveryNSeconds)  ;
+                                        String crunchifyLine = null ;
+                                        while ((crunchifyLine = readWriteFileAccess.readLine()) != null) {
+                                            TimeUnit.MILLISECONDS.sleep(crunchifyRunEveryNSeconds) ;
                                             logs.put(crunchifyLine) ;
-                                            crunchifyCounter++;
+                                            crunchifyCounter++      ;
                                         }
                                         lastKnownPosition = readWriteFileAccess.getFilePointer();
                                     }
 				} else {
 					if (debug) {
-                                          System.out.println(" Hmm.. Couldn't found new line after line # " + crunchifyCounter );
+                                          System.out.println(" Hmm.. Couldn't found new line after line # " + crunchifyCounter ) ;
                                         }
 				}
 			}
-		} catch (IOException | InterruptedException e ) {
-			stopRunning();
+		} catch (IOException  | InterruptedException e ) {
+			stopRunning() ;
 		}
 		if (debug) {
-                    System.out.println(" Exit the program..." );
+                    System.out.println(" Exit the program..." ) ;
                 }
 	}
         
