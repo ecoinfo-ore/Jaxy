@@ -57,10 +57,16 @@ public class CobyService    {
                            .build() ;        
         }
         
+        /*
         return Response.status(Response.Status.OK)
                        .entity( new StreamerLog ( path_logs ,  
                                                   configuration.getFrequencyUpdateTimeMs() ) )
-                       .build() ;        
+                       .build() ;   
+        */
+        
+         return Response.status(Response.Status.OK)
+                       .entity( new StreamerLogV2 ( path_logs ) )
+                       .build() ;  
     }
 }
 
