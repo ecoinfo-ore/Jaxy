@@ -1,17 +1,17 @@
 
-package com.rac021.jaxy.service.time ;
+package com.rac021.jaxy.coby.service.time ;
 
 /**
  *
  * @author ryahiaoui
  */
 
-import com.rac021.jaxy.api.qualifiers.ServiceRegistry;
 import javax.ws.rs.GET ;
 import java.time.Instant ;
 import javax.ws.rs.Produces ;
 import javax.ws.rs.core.Response ;
 import javax.annotation.PostConstruct ;
+import com.rac021.jaxy.api.qualifiers.ServiceRegistry;
 
 /**
  *
@@ -21,7 +21,7 @@ import javax.annotation.PostConstruct ;
 @ServiceRegistry("time")
 
 public class ServiceTime    {
-    
+ 
     @PostConstruct
     public void init() {
     }

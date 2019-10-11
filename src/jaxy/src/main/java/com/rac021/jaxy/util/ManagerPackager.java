@@ -138,6 +138,21 @@ public class ManagerPackager {
         if ( deployUi && secureUI )                 {
             war .addPackage("com.rac021.ui.filter") ;
         }
+
+        war .addPackage("com.rac021.jaxy.coby.io")                       ;
+        war .addPackage("com.rac021.jaxy.coby.checker")                  ;
+        war .addPackage("com.rac021.jaxy.coby.scheduler")                ;
+        war .addPackage("com.rac021.jaxy.coby.service.time")             ;
+        war .addPackage("com.rac021.jaxy.coby.service.jobs")             ;
+        war .addPackage("com.rac021.jaxy.coby.service.logs")             ;
+        war .addPackage("com.rac021.jaxy.coby.service.cancel")           ;
+        war .addPackage("com.rac021.jaxy.coby.service.status")           ;
+        war .addPackage("com.rac021.jaxy.coby.service.pipeline")         ;
+        war .addPackage("com.rac021.jaxy.coby.service.semantic")         ;
+        war .addPackage("com.rac021.jaxy.coby.service.cancel.all")       ;
+        war .addPackage("com.rac021.jaxy.coby.service.clean.output")     ;
+        war .addPackage("com.rac021.jaxy.coby.service.configuration")    ;
+        war .addPackage("com.rac021.jaxy.coby.service.script.generator") ;
     }
     
     private static void addAsWebResource( JAXRSArchive war    ,

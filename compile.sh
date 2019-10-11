@@ -3,12 +3,16 @@
   CURRENT_LOCATION=`pwd`/src
   
   DEMO_PATH="jaxy"
+  
+  JAXY_TARGET_JAR_NAME="jaxy-coby-thorntail.jar"
 
-  cd $CURRENT_LOCATION/dependencies/01_jaxy-api               &&  mvn clean install -Dmaven.test.skip=true
+  JAXY_FINAL_JAR_NAME="jaxy-thorntail.jar"
+  
+  cd $CURRENT_LOCATION/dependencies/01_jaxy-api               &&  mvn clean install -Dmaven.test.skip=true && mvn clean ;
 
-  cd $CURRENT_LOCATION/dependencies/02_jaxy-security-provider &&  mvn clean install -Dmaven.test.skip=true
+  cd $CURRENT_LOCATION/dependencies/02_jaxy-security-provider &&  mvn clean install -Dmaven.test.skip=true && mvn clean ;
 
-  cd $CURRENT_LOCATION/dependencies/03_jaxy-service-discovery &&  mvn clean install -Dmaven.test.skip=true
+  cd $CURRENT_LOCATION/dependencies/03_jaxy-service-discovery &&  mvn clean install -Dmaven.test.skip=true && mvn clean ;
   
 
   ## Compile certMe for generating letsEncrypt Certificates
@@ -24,8 +28,8 @@
   fi
     
   mv target/certMe.jar $CERT_ME_PATH/certMe.jar
-  
-  rm -rf $CURRENT_LOCATION/dependencies/04_certMe_ee/target
+    
+  mvn clean 
 
   ## Compile jaxyClient ( that will be downloaded by users from UI ) 
   
@@ -35,8 +39,7 @@
   
   mv target/jaxyClient.jar ../../jaxy/src/main/resources/jaxy-client/jaxyClient.jar
   
-  rm -rf $CURRENT_LOCATION/dependencies/05_jaxyClient/target
-
+  mvn clean
   
   cd $CURRENT_LOCATION/jaxy/
   
@@ -56,15 +59,16 @@
   
   # Copy jaxy-thorntail to $DEMO_PATH
   
-  if [ -f "$CURRENT_LOCATION/jaxy/target/jaxy-thorntail.jar" ]; then
+  if [ -f "$CURRENT_LOCATION/jaxy/target/$JAXY_TARGET_JAR_NAME" ]; then
  
-    if [ -f "$DEMO_PATH/jaxy-thorntail.jar" ]; then
+    if [ -f "$DEMO_PATH/$JAXY_FINAL_JAR_NAME" ]; then
     
-        rm $DEMO_PATH/jaxy-thorntail.jar
+        rm $DEMO_PATH/$JAXY_FINAL_JAR_NAME
     
     fi
     
-    mv $CURRENT_LOCATION/jaxy/target/jaxy-thorntail.jar ../../$DEMO_PATH/jaxy-thorntail.jar
+    mv $CURRENT_LOCATION/jaxy/target/$JAXY_TARGET_JAR_NAME ../../$DEMO_PATH/$JAXY_FINAL_JAR_NAME
  
   fi
 
+  mvn clean 

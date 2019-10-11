@@ -5,10 +5,10 @@
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.rac021</groupId>
-    <artifactId>jaxy</artifactId>
+    <artifactId>jaxy-coby</artifactId>
     <version>2.1</version>
     <packaging>war</packaging>
-    <description>jaxy</description>
+    <description>jaxy-coby-2019</description>
     <url>https://github.com/rac021/Jaxy</url>
     
     <properties>
@@ -17,7 +17,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <packaging.type>war</packaging.type>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <version.io.thorntail>2.4.0.Final</version.io.thorntail>
+        <!--<version.io.thorntail>2.4.0.Final</version.io.thorntail>-->
+        <version.io.thorntail>2.5.0.Final</version.io.thorntail>
         <version.jaxy>2.1</version.jaxy>
     </properties>
     
@@ -104,7 +105,7 @@
     
     <build>
         
-        <finalName>jaxy</finalName>
+        <finalName>jaxy-coby</finalName>
         
         <plugins>
             
