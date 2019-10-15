@@ -36,6 +36,9 @@ public class CobyService    {
     @Inject
     CobyConfiguration configuration ;
    
+    @Inject 
+    private LoggerTask loggerTask   ;
+    
     public CobyService() {
     }
    
@@ -64,9 +67,18 @@ public class CobyService    {
                        .build() ;   
         */
         
+        /*
          return Response.status(Response.Status.OK)
                        .entity( new StreamerLogV2 ( path_logs ) )
                        .build() ;  
+        */
+        
+        loggerTask.setLoggerFile( path_logs ) ;
+            
+        loggerTask.setTailDelayMillis( configuration.getFrequencyUpdateTimeMs() ) ;
+            
+        return Response.status ( Response.Status.OK )
+                       .entity ( loggerTask ) 
+                       .build() ;
     }
 }
-
