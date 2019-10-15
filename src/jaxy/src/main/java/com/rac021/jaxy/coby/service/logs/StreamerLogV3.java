@@ -117,7 +117,7 @@ public class StreamerLogV3  implements StreamingOutput , LoggerTask {
            if( tail   != null ) tail.cancel(true)      ;
        }
         
-       System.out.println(" Service LOG Closed ") ;
+       System.out.println(" Service LOG Closed ")      ;
     }
 
     @Schedule(persistent = false, second = "*/30", minute = "*", hour = "*", info = " Coby Logs Connections Checker " )  
